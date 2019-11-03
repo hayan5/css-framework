@@ -1,0 +1,48 @@
+//  Breakpoints are in map '$map-breakpoints' (size: min width)
+//
+//     ('': 0, xs: 480, sm: 576, md: 768, lg: 992, xl: 1200, 2x: 1440)
+
+@function get-breakpoint-min-value($key, $breakpoints: $map-breakpoints) {
+  $min: map-get($breakpoints, $key);
+  @if($min == 0) {
+    @return null;
+  } @else {
+    @return $min;
+  }
+}
+
+@function get-breakpoint-max-value($key, $breakpoints: $map-breakpoints) {
+  $max: map-get($breakpoints, $key);
+  @if($max == 0) {
+    @return null;
+  } @else {
+    @return ($max - 1);
+  }
+}
+
+@mixin min($key, $breakpoints: $map-breakpoints) {
+  $min: get-breakpoint-min-value($key, $breakpoints);
+  @debug $min;
+}
+
+@mixin max($key, $breakpoints: $map-breakpoints) {
+  $max: get-breakpoint-max-value($key, $breakpoints);
+  @debug $max;
+}
+
+.col {
+  @include min('',$map-breakpoints);
+  @include min('xs',$map-breakpoints);
+  @include min('sm',$map-breakpoints);
+  // @include min('md',$map-breakpoints);
+  // @include min('lg',$map-breakpoints);
+  // @include min('xl',$map-breakpoints);
+  // @include min('2x',$map-breakpoints);
+  // @include max('sm',$map-breakpoints);
+  // @include max('xs',$map-breakpoints);
+  // @include max('sm',$map-breakpoints);
+  // @include max('md',$map-breakpoints);
+  // @include max('lg',$map-breakpoints);
+  // @include max('xl',$map-breakpoints);
+  // @include max('2x',$map-breakpoints);
+}

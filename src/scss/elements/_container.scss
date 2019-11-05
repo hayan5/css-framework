@@ -1,0 +1,12 @@
+
+.container {
+  flex-grow: 1;
+  position: relative;
+  margin: 0 auto;
+  width: auto;
+  max-width: map-get($grid-breakpoints, 'xxl') * 1px;
+  &--fluid {
+    width: 100%;
+    max-width: none;
+  }
+}

@@ -1,8 +1,23 @@
 
-$primary-color:#6c6;
-$font: 'lato';
-body{
-  background: $primary-color;
-  font-family: $font;
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+  xxl: 1440
+);
 
-}
+$spacing-base: 1em;
+
+$spacing: (
+  xxxs: $spacing-base * 0.25,
+  xxs: $spacing-base * 0.375,
+  xs: $spacing-base * 0.5,
+  sm: $spacing-base * 0.75,
+  md: $spacing-base * 1.25,
+  lg: $spacing-base * 2,
+  xl: $spacing-base * 3.25,
+  xxl: $spacing-base * 5.25,
+  xxxl: $spacing-base * 8.5
+);

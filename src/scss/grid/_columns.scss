@@ -1,0 +1,89 @@
+$grid-columns: 12;
+
+.col {
+  flex: 0 1 auto;
+  padding-left: $spacing-base;
+  padding-right: $spacing-base;
+  position: relative;
+  width: 100%;
+
+  &--auto {
+    flex: 1 1 auto;
+    width: auto;
+    max-width: none;
+  }
+
+  &--no-spacing {
+    padding: 0;
+  }
+
+  // 
+  @each $key, $breakpoint in $grid-breakpoints {
+    // For all media sizes no modifer required
+    @if ($key == 'xs') {
+      &--offset-0 {
+        margin-left: 0;
+      }
+      @for $i from 1 through $grid-columns {
+        &-#{$i} {
+          flex-basis: (100 / ($grid-columns / $i)) * 1%;
+        }
+        &--offset-#{$i} {
+          margin-left: (100 / ($grid-columns/ $i)) * 1%;
+        }
+        &--order-#{$i} {
+          order: $i;
+        }
+      }
+    } @else {
+      @include media-breakpoint-up($key, $grid-breakpoints) {
+        &--offset#{$key}-0 {
+          margin-left: 0;
+        }
+        @for $i from 1 through $grid-columns {
+          &-#{$key}-#{$i} {
+            flex-basis: (100 / ($grid-columns / $i)) * 1%;
+          }
+          &--offset-#{$key}-#{$i} {
+            margin-left: (100 / ($grid-columns/ $i)) * 1%;
+          }
+          &--order-#{$key}-#{$i} {
+            order: $i;
+          }
+        }
+      }
+    }
+  }
+
+  &.align {
+    &--auto {
+      align-self: auto;
+    }
+    &--start {
+      align-self: flex-start;
+    }
+    &--end {
+      align-self: flex-end;
+    }
+    &--center {
+      align-self: center;
+    }
+    &--baseline {
+      align-self: baseline;
+    }
+    &--stretch {
+      align-self: stretch;
+    }
+  }
+
+  @for $i from 0 through 4 {
+    &.grow-#{$i} {
+      max-width: none;
+      flex-grow: #{$i};
+    }
+    &.shrink-#{$i} {
+      max-width: none;
+      flex-grow: #{$i};
+    }
+  }
+}

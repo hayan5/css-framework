@@ -1,9 +1,18 @@
-// @import 'utilities/all';
-@import 'base/all';
-@import 'components/all';
-@import 'form/all';
-@import 'grid/all';
-@import 'layout/all';
-@import 'utilities/variables';
 
 
+@import 
+  'utilities/variables',
+  'utilities/mixins';
+
+@import 
+  'base/reset';
+
+@import
+  'elements/container';
+
+@import
+  'grid/flex-grid',
+  'grid/columns';
+
+@import 'test.scss';
+  

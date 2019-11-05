@@ -1,0 +1,43 @@
+@mixin fontSmooth {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+@mixin media-breakpoint-up($key, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $key);
+  @media screen and (min-width: $min * 1px) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-down($key, $breakpoints: $grid-breakpoints) {
+  $max: map-get($breakpoints, $key);
+  @media screen and (max-width: ($max - 1) * 1px) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-custom($breakpoint, $min-or-max) {
+  @if($breakpoint == 0) {
+    @content;
+  } @else {
+    @media screen and (#{$min-or-max}-width: $breakpoint *1px) {
+      @content;
+    }
+  }
+}
+
+// Only Touchscreens
+@mixin media-touch {
+  @media (hover: none) and (pointer: coarse) {
+      @content;
+  }
+}
+
+// No Touchscreens 
+@mixin media-no-touch {
+  @media (any-hover: hover) and (min-width: $screen-md * 1px) {
+      @content;
+  }
+}
